@@ -1,0 +1,8 @@
+Import('*')
+
+lib_env = lib_env.Clone() 
+lib_env.Append(CPPPATH = ['.'])
+
+lt = lib_env.SharedLibrary('SASTL', Split("SASTL.c"))
+li = lib_env.Install(bin_env.LibDest, lt)
+lh = lib_env.Install(lib_env.IncDest, Split('SASTL.h'))
