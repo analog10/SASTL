@@ -1,0 +1,8 @@
+Import('*')
+
+libs = Split("SASTL");
+stlcat = bin_env.Program('stlcat', Split("stlcat.cpp"), LIBS=libs)
+bin_env.Install(bin_env.BinDest, stlcat)
+
+stl_center_scale = bin_env.Program('stl_center_scale', Split("stl_center_scale.cpp"), LIBS=libs)
+bin_env.Install(bin_env.BinDest, stl_center_scale)
