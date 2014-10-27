@@ -20,8 +20,8 @@ commonEnv.BinDest = commonEnv.RootDest + '/bin'
 commonEnv.Append(CPPPATH = [commonEnv.IncDest])
 commonEnv.Append(CFLAGS = ' -std=gnu11 -Wall -pedantic')
 commonEnv.Append(CFLAGS = '-O2')
-commonEnv.Append(CCFLAGS = ' -std=gnu++11 -Wall -pedantic')
-commonEnv.Append(CCFLAGS = '-O2')
+commonEnv.Append(CXXFLAGS = ' -std=gnu++11 -Wall -pedantic')
+commonEnv.Append(CXXFLAGS = '-O2')
 #commonEnv.Replace(LINK = 'ld')
 
 # Set linking flags for executables
@@ -34,4 +34,6 @@ lib_env = commonEnv.Clone()
 lib_env.Append(LINKFLAGS = ['-L'+commonEnv.LibDest])
 
 SConscript(Split('lib/SConscript'),\
-	exports='bin_env lib_env', variant_dir='tmp', duplicate=0)
+	exports='bin_env lib_env', variant_dir='tmp/lib', duplicate=0)
+SConscript(Split('prog/SConscript'),\
+	exports='bin_env lib_env', variant_dir='tmp/prog', duplicate=0)
